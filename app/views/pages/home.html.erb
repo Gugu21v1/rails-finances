@@ -1,2 +1,110 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="app">
+  <div class="app-body">
+    <div class="app-body-navigation">
+      <nav class="navigation">
+        <%= link_to root_path do  %>
+          <i class="fa-regular fa-newspaper"></i>
+          <span>Dashboard</span>
+        <% end %>
+        <%= link_to goals_path do  %>
+          <i class="fa-regular fa-square-check"></i>
+          <span>Metas</span>
+        <% end %>
+        <%= link_to transitions_path do  %>
+          <i class="fa-solid fa-right-left"></i>
+          <span>Histórico</span>
+        <% end %>
+      </nav>
+      <footer class="footer">
+        <h1>FSWeb<small>©</small></h1>
+        <div>
+          FSWeb ©<br />
+          Todos os Direitos Reservados 2023
+        </div>
+      </footer>
+    </div>
+    <div class="app-body-main-content">
+      <section class="service-section">
+        <h2>Dashboard</h2>
+        <div class="tiles">
+          <article class="tile">
+            <div class="tile-header">
+              <i class="fa-solid fa-dollar-sign"></i>
+              <h3>
+                <span>Saldo Atual</span>
+                <span>R$ <%= @atual %></span>
+              </h3>
+            </div>
+          </article>
+          <article class="tile">
+            <div class="tile-header">
+              <i class="fa-solid fa-wallet"></i>
+              <h3>
+                <span>Guardar</span>
+                <span>R$ <%= (@atual.to_f * 7/100).ceil(2) %></span>
+              </h3>
+            </div>
+          </article>
+          <article class="tile">
+            <div class="tile-header">
+              <i class="fa-solid fa-champagne-glasses"></i>
+              <h3>
+                <span>Lazer</span>
+                <span>R$ <%= (@atual.to_f * 15/100).ceil(2) %></span>
+              </h3>
+            </div>
+          </article>
+        </div>
+        <div class="service-section-footer">
+          <p>Recomendamos fortemente você seguir nossas dicas para administrar seu dinheiro!</p>
+        </div>
+      </section>
+      <section class="transfer-section">
+        <%= render 'transitions/form', transition: @transition %>
+        <div class="transfer-section-header mt-4">
+          <h2>Últimas Transações</h2>
+        </div>
+        <% Transition.where(user: current_user).last(5).each do |transition| %>
+          <div class="transfers">
+            <div class="transfer">
+              <dl class="transfer-details">
+                <div>
+                  <dt><%= transition.tipo %></dt>
+                </div>
+                <div>
+                  <dt><%= transition.data %></dt>
+                </div>
+              </dl>
+              <div class="transfer-number">
+                R$ <%= transition.valor.to_f %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </section>
+    </div>
+    <div class="app-body-sidebar">
+      <section class="payment-section">
+        <h2 class="text-center">Suas Metas <i class="fa-regular fa-square-check"></i></h2>
+        <div class="payment-section-header">
+          <p class="text-center">Aqui estão algumas das suas metas!</p>
+        </div>
+        <% Goal.where(user: current_user).last(3).each do |goal| %>
+          <div class="payments">
+            <div class="payment">
+              <div class="payment-details">
+                <h3><%= goal.nome %></h3>
+                <div>
+                  <span> R$ <%= goal.valor.to_f %></span>
+                  <button class="icon-button">
+                    <i class="ph-caret-right-bold"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </section>
+    </div>
+  </div>
+</div>

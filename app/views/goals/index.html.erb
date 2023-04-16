@@ -1,2 +1,31 @@
-<h1>Goals#index</h1>
-<p>Find me in app/views/goals/index.html.erb</p>
+<div class="container mt-4">
+  <%= link_to root_path do %>
+    <h4><i class="fa-solid fa-angle-left"></i>
+      Dashboard</h4>
+  <% end %>
+  <h2 class="text-center">Suas Metas <i class="fa-regular fa-square-check"></i></h2>
+  <div class="payment-section-header">
+    <p class="text-center">Aqui estão algumas das suas metas!</p>
+  </div>
+</div>
+<div class="container m-5">
+  <section class="payment-section">
+    <% @goals.each do |goal| %>
+      <div class="payments">
+        <div class="payment">
+          <div class="payment-details">
+            <h2><%= goal.nome %></h2>
+            <h3><%= goal.desc %></h3>
+            <div>
+              <span> R$ <%= goal.valor.to_f %></span>
+              <span> <%= goal.tempo %></span>
+              <button class="icon-button">
+                <i class="ph-caret-right-bold"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </section>
+</div>

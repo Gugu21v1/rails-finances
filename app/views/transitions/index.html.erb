@@ -1,2 +1,28 @@
-<h1>Transitions#index</h1>
-<p>Find me in app/views/transitions/index.html.erb</p>
+<div class="container m-5">
+  <%= link_to root_path do %>
+    <h4><i class="fa-solid fa-angle-left"></i>
+      Dashboard</h4>
+  <% end %>
+  <section class="transfer-section">
+    <div class="transfer-section-header mt-4">
+      <h2>Todas as Transações</h2>
+    </div>
+    <% @transitions.each do |transition| %>
+      <div class="transfers">
+        <div class="transfer">
+          <dl class="transfer-details">
+            <div>
+              <dt><%= transition.tipo %></dt>
+            </div>
+            <div>
+              <dt><%= transition.data %></dt>
+            </div>
+          </dl>
+          <div class="transfer-number">
+            R$ <%= transition.valor.to_f %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </section>
+</div>

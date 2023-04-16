@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :transitions
   has_many :goals
+  has_many :renda_fixas
+  has_many :gastos_fixos
 end

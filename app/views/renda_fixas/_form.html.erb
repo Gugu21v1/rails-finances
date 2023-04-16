@@ -1,0 +1,7 @@
+<h1>Nova Renda Fixa</h1>
+<%= simple_form_for(renda) do |f| %>
+  <%= f.input :nome %>
+  <%= f.input :valor %>
+  <%= f.input :data %>
+  <%= f.submit "Enviar", class: "btn btn-primary" %>
+<% end %>

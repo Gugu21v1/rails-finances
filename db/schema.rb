@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_16_152651) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_16_202926) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "gastos_fixos", force: :cascade do |t|
+    t.string "nome"
+    t.string "valor", default: "0"
+    t.string "data"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_gastos_fixos_on_user_id"
+  end
 
   create_table "goals", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -23,6 +33,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_152651) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
+  create_table "renda_fixas", force: :cascade do |t|
+    t.string "nome"
+    t.string "valor", default: "0"
+    t.string "data"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_renda_fixas_on_user_id"
   end
 
   create_table "transitions", force: :cascade do |t|
@@ -44,15 +64,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_152651) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nome"
-    t.string "dinheiro_atual"
-    t.string "renda_fixa"
-    t.string "gastos_fixos"
-    t.string "renda_nao_fixa"
-    t.string "gastos_nao_fixos"
+    t.string "dinheiro_atual", default: "0"
+    t.string "renda_fixa", default: "0"
+    t.string "gastos_fixos", default: "0"
+    t.string "renda_nao_fixa", default: "0"
+    t.string "gastos_nao_fixos", default: "0"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "gastos_fixos", "users"
   add_foreign_key "goals", "users"
+  add_foreign_key "renda_fixas", "users"
   add_foreign_key "transitions", "users"
 end

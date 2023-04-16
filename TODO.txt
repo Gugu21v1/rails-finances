@@ -8,3 +8,5 @@ Colocar gastos não fixos
 Ver valor recomendado para guardar
 Ver valor recomendado para gastar com lazer
 Poder criar Metas e ver progressão delas
+
+Todo mês na data que o usuario escolheu a renda fixa será depositada e os gastos fixos serão cobrados.
