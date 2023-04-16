@@ -1,0 +1,10 @@
+Usuário precisa:
+Colocar quanto ganha fixo no mês.
+Colocar ganhos não fixos
+Ver Dinheiro atual
+Ver histórico
+Colocar gastos fixos
+Colocar gastos não fixos
+Ver valor recomendado para guardar
+Ver valor recomendado para gastar com lazer
+Poder criar Metas e ver progressão delas
