@@ -14,6 +14,14 @@
           <i class="fa-solid fa-right-left"></i>
           <span>Histórico</span>
         <% end %>
+        <%= link_to new_renda_fixa_path do  %>
+          <i class="fa-solid fa-circle-plus"></i>
+          <span>Adicionar Renda Fixa</span>
+        <% end %>
+        <%= link_to new_gastos_fixo_path do  %>
+          <i class="fa-solid fa-circle-minus"></i>
+          <span>Adicionar Gasto Fixo</span>
+        <% end %>
       </nav>
       <footer class="footer">
         <h1>FSWeb<small>©</small></h1>
@@ -41,7 +49,7 @@
               <i class="fa-solid fa-wallet"></i>
               <h3>
                 <span>Guardar</span>
-                <span>R$ <%= (@atual.to_f * 7/100).ceil(2) %></span>
+                <span>R$ <%= ((@renda_mensal_fixa - @gasto_mensal_fixo + @atual) * 10/100).ceil(2) %></span>
               </h3>
             </div>
           </article>
@@ -50,7 +58,7 @@
               <i class="fa-solid fa-champagne-glasses"></i>
               <h3>
                 <span>Lazer</span>
-                <span>R$ <%= (@atual.to_f * 15/100).ceil(2) %></span>
+                <span>R$ <%= ((@renda_mensal_fixa - @gasto_mensal_fixo + @atual) * 30/100 - (@renda_mensal_fixa - @gasto_mensal_fixo + @atual) * 10/100).ceil(2) %></span>
               </h3>
             </div>
           </article>

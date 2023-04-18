@@ -844,6 +844,18 @@ button {
 
 a {
   text-decoration: none;
+  transition: 0.2s ease;
+
+  &:hover {
+    color: var(--c-text-tertiary);
+  }
+
+  &:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: #ffffff;
+  }
 }
 
 #transition_tipo_saída, #transition_tipo_entrada {
@@ -861,4 +873,15 @@ a {
   justify-content: start;
   align-items: center;
   margin: 1em auto;
+}
+
+.tamanho-a > a {
+  width: 40px;
+}
+
+.animation-left:hover {
+  h4 {
+    transition: 0.5s ease;
+    transform: translateX(-30px);
+  }
 }

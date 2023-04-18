@@ -14,5 +14,9 @@
 
 .nav-link {
   color: var(--c-text-tertiary);
-
+  &:hover, &:focus {
+    color: var(--c-text-tertiary);
+    scale: 1.2;
+    margin: 0 10px;
+  }
 }

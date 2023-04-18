@@ -1,2 +1,12 @@
-<h1>GastosFixos#new</h1>
-<p>Find me in app/views/gastos_fixos/new.html.erb</p>
+<div class="container m-5">
+  <%= link_to root_path, class: "animation-left" do %>
+    <h4><i class="fa-solid fa-angle-left"></i>
+      Dashboard</h4>
+  <% end %>
+</div>
+<div class="container text-center mt-3">
+  <%= render 'form', gasto: @gasto %>
+</div>
+<script>
+  $('#gastos_fixo_valor').mask('#.##0,00', {reverse: true});
+</script>

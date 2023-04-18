@@ -1,12 +1,23 @@
 Usuário precisa:
-Colocar quanto ganha fixo no mês.
-Colocar ganhos não fixos
-Ver Dinheiro atual
-Ver histórico
-Colocar gastos fixos
-Colocar gastos não fixos
-Ver valor recomendado para guardar
-Ver valor recomendado para gastar com lazer
-Poder criar Metas e ver progressão delas
 
-Todo mês na data que o usuario escolheu a renda fixa será depositada e os gastos fixos serão cobrados.
+Colocar quanto ganha fixo no mês // Feito
+
+Colocar ganhos não fixos // Feito
+
+Ver Dinheiro atual // Feito
+
+Ver histórico // Feito
+
+Colocar gastos fixos // Feito
+
+Colocar gastos não fixos // Feito
+
+Ver valor recomendado para guardar // Feito
+
+Ver valor recomendado para gastar com lazer // Feito
+
+Poder criar Metas // Feito
+
+Ver progressão das metas, separando determinado valor para elas
+
+Todo mês na data que o usuario escolheu a renda fixa será depositada e os gastos fixos serão cobrados // Feito

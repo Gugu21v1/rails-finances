@@ -1,0 +1,7 @@
+<h1>Novo Gasto Fixo</h1>
+<%= simple_form_for(gasto) do |f| %>
+  <%= f.input :nome %>
+  <%= f.input :valor, input_html: { value: '' } %>
+  <%= f.input :data,  collection: 1..28 %>
+  <%= f.submit "Enviar", class: "btn btn-primary" %>
+<% end %>
