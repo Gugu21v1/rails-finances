@@ -1,5 +1,24 @@
 <h1>Nova Transação</h1>
 <%= simple_form_for(transition) do |f| %>
-  <%= f.input :valor %>
-  <%= f.submit "Enviar", class: "btn btn-primary" %>
+  <%= f.input :tipo, as: :radio_buttons, wrapper: :button_group, item_label_class: 'ms-2', label: false, collection: [['Entrada', 'Entrada'], ['Saída', 'Saída']], error: 'Por favor selecione uma opção.' %>
+  <%= f.input :valor, error: 'Digite um número', id: 'currency' %>
+  <%= f.input :nome %>
+  <%= f.submit "Enviar", class: "btn btn-primary", id:"botao" %>
 <% end %>
+<style>
+  input:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  .help-block {
+    margin-left: 1em;
+    font-size: 0.875em;
+    color: #FD1015;
+    margin-top: 0.3em;
+  }
+</style>
+<script>
+  $('#transition_valor').mask('#.##0,00', {reverse: true});
+</script>

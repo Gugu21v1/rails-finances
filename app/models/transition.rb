@@ -1,5 +1,5 @@
 class Transition < ApplicationRecord
-  validates :valor, numericality: true
-
+  validates :valor, :tipo, presence: true
+  validates :nome, length: {in: 0..20}
   belongs_to :user
 end

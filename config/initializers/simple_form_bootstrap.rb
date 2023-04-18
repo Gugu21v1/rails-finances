@@ -44,6 +44,16 @@ SimpleForm.setup do |config|
   config.input_field_valid_class = 'is-valid'
 
 
+  config.wrappers :button_group, tag: 'div', class: 'btn-group btn-group-lg', error_class: 'has-error', wrapper_html: {'data-toggle' => 'buttons'} do |b|
+    b.use :html5
+    b.optional :readonly
+
+    b.use :label, class: 'control-label p-5'
+    b.use :input
+    b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
+    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+  end
+
   # vertical forms
   #
   # vertical default_wrapper

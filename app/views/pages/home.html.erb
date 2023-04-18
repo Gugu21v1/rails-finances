@@ -72,11 +72,18 @@
                   <dt><%= transition.tipo %></dt>
                 </div>
                 <div>
+                  <dt><%= transition.nome %></dt>
+                </div>
+                <div>
                   <dt><%= transition.data %></dt>
                 </div>
               </dl>
               <div class="transfer-number">
-                R$ <%= transition.valor.to_f %>
+                <% if transition.tipo == "Saída" %>
+                  (-) R$ <%= transition.valor.to_f  %>
+                <% else %>
+                  R$ <%= transition.valor.to_f %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -96,9 +103,11 @@
                 <h3><%= goal.nome %></h3>
                 <div>
                   <span> R$ <%= goal.valor.to_f %></span>
-                  <button class="icon-button">
-                    <i class="ph-caret-right-bold"></i>
-                  </button>
+                  <%= link_to goal_path(goal), data: {turbo_method: :delete, turbo_confirm: "Marcar meta como concluída? Isso irá remover ela da sua lista!"} do %>
+                    <button class="icon-button">
+                      <i class="ph-caret-right-bold"></i>
+                    </button>
+                  <% end %>
                 </div>
               </div>
             </div>

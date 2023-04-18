@@ -1,0 +1,10 @@
+<h1>Definir Nova Meta</h1>
+<%= simple_form_for(meta) do |f| %>
+  <%= f.input :nome, error: "Digite um nome para sua meta" %>
+  <%= f.input :desc %>
+  <%= f.input :valor, input_html: { value: '' }, error: "Digite um valor" %>
+  <%= f.submit "Enviar", class: "btn btn-primary" %>
+<% end %>
+<script>
+  $('#goal_valor').mask('#.##0,00', {reverse: true});
+</script>

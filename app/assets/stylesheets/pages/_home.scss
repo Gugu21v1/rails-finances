@@ -583,7 +583,6 @@ a {
 	display: flex;
 	width: 100%;
 	flex-direction: column;
-	margin-left: 1.5rem;
 	h3 {
 		font-size: 1rem;
 		color: var(--c-text-tertiary);
@@ -695,7 +694,7 @@ a {
 	margin-left: 2rem;
 	font-size: 1.125rem;
 	flex-shrink: 0;
-	width: 15%;
+	width: 30%;
 	display: flex;
 	justify-content: flex-end;
 	@media (max-width: 1000px) {
@@ -845,4 +844,21 @@ button {
 
 a {
   text-decoration: none;
+}
+
+#transition_tipo_saída, #transition_tipo_entrada {
+  text-decoration: none;
+  margin-left: 0.5em;
+
+  #transition_tipo_saída:active, #transition_tipo_entrada:active {
+    outline-style: none;
+    border: none;
+  }
+}
+
+.transition_tipo {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 1em auto;
 }

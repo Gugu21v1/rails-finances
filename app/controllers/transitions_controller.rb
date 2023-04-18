@@ -13,15 +13,15 @@ class TransitionsController < ApplicationController
   def create
     @user = current_user
     @transition = Transition.new(transition_params)
+    @transition.valor = @transition.valor.gsub('.', '')
+    @transition.valor = @transition.valor.gsub(',', '.')
     @transition.user = @user
     @transition.data = Time.now.strftime("%d/%m/%Y")
-    if @transition.valor.to_i > 0
-      @transition.tipo = "Depósito"
+    if @transition.tipo == "Entrada"
       @user.dinheiro_atual = @transition.valor.to_f + @user.dinheiro_atual.to_f
       @user.save
-    elsif @transition.valor.to_i < 0
-      @transition.tipo = "Saque"
-      @user.dinheiro_atual = @transition.valor.to_f + @user.dinheiro_atual.to_f
+    elsif @transition.tipo == "Saída"
+      @user.dinheiro_atual = @user.dinheiro_atual.to_f - @transition.valor.to_f
       @user.save
     else
       false
@@ -29,6 +29,8 @@ class TransitionsController < ApplicationController
     if @transition.save
       redirect_to root_path
     else
+      @user = current_user
+      @atual = @user.dinheiro_atual
       render 'pages/home', status: :unprocessable_entity
     end
   end
@@ -45,6 +47,6 @@ class TransitionsController < ApplicationController
   private
 
   def transition_params
-    params.require(:transition).permit(:tipo, :valor, :data)
+    params.require(:transition).permit(:tipo, :valor, :data, :nome)
   end
 end

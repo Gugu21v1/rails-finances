@@ -1,5 +1,5 @@
 class Goal < ApplicationRecord
-  validates :valor, numericality: true
-
+  validates :valor, presence: true
+  validates :nome, presence: true
   belongs_to :user
 end

@@ -8,7 +8,7 @@
     <p class="text-center">Aqui estão algumas das suas metas!</p>
   </div>
 </div>
-<div class="container m-5">
+<div class="container">
   <section class="payment-section">
     <% @goals.each do |goal| %>
       <div class="payments">
@@ -19,13 +19,18 @@
             <div>
               <span> R$ <%= goal.valor.to_f %></span>
               <span> <%= goal.tempo %></span>
-              <button class="icon-button">
-                <i class="ph-caret-right-bold"></i>
-              </button>
+              <%= link_to goal_path(goal), data: {turbo_method: :delete, turbo_confirm: "Marcar meta como concluída? Isso irá remover ela da sua lista!"} do %>
+                <button class="icon-button">
+                  <i class="ph-caret-right-bold"></i>
+                </button>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
     <% end %>
   </section>
+</div>
+<div class="container text-center mt-3">
+  <%= render "form", meta: @goal %>
 </div>

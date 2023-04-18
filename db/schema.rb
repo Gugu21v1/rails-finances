@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_16_202926) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_17_210327) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_202926) do
     t.string "tempo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "feito", default: false
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
@@ -42,6 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_202926) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "feita", default: false
     t.index ["user_id"], name: "index_renda_fixas_on_user_id"
   end
 
@@ -52,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_202926) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nome"
     t.index ["user_id"], name: "index_transitions_on_user_id"
   end
 
