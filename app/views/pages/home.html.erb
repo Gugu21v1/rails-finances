@@ -49,7 +49,11 @@
               <i class="fa-solid fa-wallet"></i>
               <h3>
                 <span>Guardar</span>
-                <span>R$ <%= ((@renda_mensal_fixa - @gasto_mensal_fixo + @atual) * 10/100).ceil(2) %></span>
+                <% if ((@renda_mensal_fixa - @gasto_mensal_fixo + @atual) * 10/100).ceil(2) <= 0 %>
+                  <span>R$ 0.00</span>
+                <% else %>
+                  <%= ((@renda_mensal_fixa - @gasto_mensal_fixo + @atual) * 10/100).ceil(2) %>
+                <% end %>
               </h3>
             </div>
           </article>
@@ -58,7 +62,11 @@
               <i class="fa-solid fa-champagne-glasses"></i>
               <h3>
                 <span>Lazer</span>
-                <span>R$ <%= ((@renda_mensal_fixa - @gasto_mensal_fixo + @atual) * 30/100 - (@renda_mensal_fixa - @gasto_mensal_fixo + @atual) * 10/100).ceil(2) %></span>
+                <% if (((@renda_mensal_fixa - @gasto_mensal_fixo + @atual) - ((@renda_mensal_fixa - @gasto_mensal_fixo + @atual) * 10/100)) * 30/100).ceil(2) <= 0 %>
+                  <span>R$ 0.00</span>
+                <% else %>
+                  <%= (((@renda_mensal_fixa - @gasto_mensal_fixo + @atual) - ((@renda_mensal_fixa - @gasto_mensal_fixo + @atual) * 10/100)) * 30/100).ceil(2) %>
+                <% end %>
               </h3>
             </div>
           </article>

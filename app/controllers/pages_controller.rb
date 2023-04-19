@@ -18,7 +18,7 @@ class PagesController < ApplicationController
     # Saber se é o dia do pagamento ou se ele já passou
     RendaFixa.where(user: current_user).each do |renda|
       if renda.data == Time.now.strftime("%d") || Time.now.strftime("%d").to_i > renda.data.to_i
-        if Transition.all != []
+        if Transition.where(user: current_user) != []
           Transition.where(user: current_user).each do |transition|
             if transition.data.split('/')[1] == Time.now.strftime("%m") && renda.nome == transition.nome && renda.feita == true
             elsif transition.data.split('/')[1].to_i != Time.now.strftime("%m").to_i + 1 && renda.feita == false
@@ -87,6 +87,7 @@ class PagesController < ApplicationController
   end
 
   def new_transition(valor, nome)
+    puts '---------------------- CHAMOU ------------------------'
     valor = valor.gsub('.', '').gsub(',', '.')
     Transition.new(valor: valor, user: current_user, tipo: "Entrada", data: Time.now.strftime("%d/%m/%Y"), nome: nome).save
     dinheiro_novo = current_user.dinheiro_atual.to_f + valor.to_f
